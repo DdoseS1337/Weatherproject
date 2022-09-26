@@ -3,7 +3,7 @@ import https from 'https';
 import { getKeyValue , TOKEN_DICTIONARY} from './storage.service.js'
 
 const getWeather = async function(city) {
-    const token = await getKeyValue(TOKEN_DICTIONARY.token);
+    const token = process.env.TOKEN ?? await getKeyValue(TOKEN_DICTIONARY.token);
     if(!token) {
         throw new Error('No token API, enter token by command -t [API_KEY]');
     }
